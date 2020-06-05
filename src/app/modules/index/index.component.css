@@ -1,0 +1,145 @@
+img {
+    width: 100%;
+    height: 350px;
+    padding: 10px;
+    border: solid 2px black;
+}
+
+.container{
+	padding: 0 20px 0 20px ;
+}
+
+nb-card, nb-card-body{
+    width: 100% !important;
+}
+
+div a{
+    color: white !important;
+    font-weight: bolder;
+    background-color: black;
+}
+.slider {
+	text-align: center;
+	position: relative;
+	background: #000;
+}
+
+.slider .bx-pager {
+	position: absolute;
+	bottom: 10px;
+	z-index: 99;
+	left: 0;
+	right: 0;
+	font-size: 0;
+	text-align: center;
+}
+
+.slider .bx-pager div {
+	padding: 0 2px;
+	display: inline-block;
+}
+
+.slider .bx-pager a.active {
+	background: #fff;
+}
+
+.slider .bx-pager a {
+	display: inline-block;
+	width: 13px;
+	text-indent: -999em;
+	height: 13px;
+	border: 2px solid #fff;
+	border-radius: 70px;
+}
+
+
+
+.slider div {
+	color: #fff;
+	height: 450px;
+	background: no-repeat 50% 0;
+	background-size: cover;
+}
+
+.slider h3 {
+	color: #a5b0d6;
+	font-size: 24px;
+	font-weight: 200;
+	letter-spacing: 4.5px;
+	line-height: 28px;
+	padding: 20px 0 0;
+}
+
+.slider .btn-more {
+	width: 112px;
+	display: block;
+	color: #a5b1d5;
+	font-size: 10px;
+	font-weight: 500;
+	margin: 29px auto;
+	text-align: center;
+	line-height: 27px;
+	height: 31px;
+	border: 1px solid #a5b1d5;
+}
+
+.slider .btn-more:hover{
+	text-decoration: none;
+	border: 1px solid #fff;
+	color: #fff;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.slider h2 {
+	color: #fff;
+	font-size: 48px;
+	line-height: 46px;
+	letter-spacing: 9px;
+    font-weight: 300;
+    padding-bottom: 200px;
+}
+
+.slider .purple h3 {
+	color: #afa6c8;
+}
+
+.slider .purple a {
+	border-color: #afa6c8;
+	color: #afa6c8;
+}
+
+.slider .yellow h3 {
+	color: #f7c769;
+}
+
+.slider .yellow a {
+	border-color: #f7c769;
+	color: #f7c769;
+}
+
+
+@media screen and (max-width: 760px) {
+
+	.slider .btn-more {
+		margin: 10px auto;
+	}
+
+	.slider h3 {
+		padding-top: 10px;
+		font-size: 13px;
+	}
+
+	.slider h2 {
+		font-size: 18px;
+		margin: -14px 0 -10px;
+		letter-spacing: 1px;
+	}
+
+
+	.slider div {
+		height: 350px;
+	}
+}

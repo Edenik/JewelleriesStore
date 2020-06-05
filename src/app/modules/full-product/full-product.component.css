@@ -1,0 +1,197 @@
+
+
+button{
+    margin: 5px;
+}
+
+.container {
+	position: relative;
+	width: 1170px;
+	margin: 0 auto;
+}
+
+#content {
+	overflow: hidden;
+}
+
+#content.full {
+	float: none;
+	width: auto;
+}
+
+
+.product {
+    overflow: hidden;
+    position: relative;
+
+}
+
+.product .image {
+	float: left;
+	overflow: hidden;
+	width: 570px;
+	height: 570px;
+	margin: 13px 130px 0 0;
+	border: 1px solid #d3d3d3;
+    background-color: #fff;
+}
+
+.product .image img {
+	width: 100%;
+}
+
+.product .details {
+	overflow: hidden;
+	padding-bottom: 12px;
+}
+
+.product h1 {
+	color: #656567;
+	font-size: 24px;
+	font-weight: 600;
+	line-height: 30px;
+	padding: 5px 0;
+}
+
+.product p {
+	line-height: 27px;
+	font-size: 16px;
+}
+
+
+.entry .nav {
+	border-right: 1px solid #cecece;
+	overflow: hidden;
+	margin: 13px 0 0 0;
+}
+
+.entry .nav ul {
+	margin: 0 -1px 0 0;
+	overflow: hidden;
+}
+
+.entry .nav li:first-child {
+	border-left: 1px solid #cecece;
+}
+
+.entry .nav li:last-child {
+	border-right: 0;
+	padding-right: 20px;
+	margin-right: -20px;
+}
+
+.entry .nav li:last-child a {
+	border-right: 0;
+	padding-right: 50px;
+	margin-right: -50px;
+}
+
+.entry .nav li {
+	border: 1px solid #cecece;
+	float: left;
+	border-left: 0;
+	background: #f2f2f2;
+	width: 33.3%;
+	padding: 0;
+}
+
+
+.details .actions {
+	border: 1px solid #cecece;
+	padding: 12px;
+	margin: 18px 0;
+	overflow: hidden;
+}
+
+.details .actions .crf-s {
+	float: left;
+	width: 85px;
+}
+
+.details .actions a {
+	float: right;
+	padding: 0 44px;
+	line-height: 40px;
+	height: 40px;
+}
+
+.details .actions label {
+	float: left;
+	text-transform: uppercase;
+	line-height: 38px;
+	padding: 0 11px 0 5px;
+	color: #656567;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.product h4 {
+	color: #939597;
+	font-size: 36px;
+	font-weight: 200;
+	line-height: 40px;
+	padding-bottom: 30px;
+}
+
+
+
+
+@media screen and (max-width: 1220px) {
+
+	.container {
+		width: auto;
+		padding: 0 20px;
+	}
+
+
+	.product .image {
+		width: 40%;
+		margin-right: 30px;
+		height: auto;
+	}
+}
+
+
+@media screen and (max-width: 760px) {
+
+
+	.details .actions a {
+		float: none;
+		width: 100%;
+		margin: 10px 0 0;
+		text-align: center;
+	}
+		
+
+
+	.product .image {
+		width: auto;
+		margin: 0 0 20px;
+		float: none;
+	}
+
+
+	.entry ol {
+		margin-left: 0;
+	}
+
+	.entry h2,
+	h1 {
+		font-size: 20px;
+		line-height: normal;
+	}
+
+	.entry {
+		font-size: 16px;
+		line-height: 28px;
+	}
+
+	.entry li {
+		font-size: 14px;
+	}
+
+	
+
+}
+
+

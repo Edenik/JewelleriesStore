@@ -1,0 +1,27 @@
+
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .profile:focus {outline:0;}
+
+  .icon{
+    font-size: 26px !important;
+  }
+  .title{
+      font-weight: bold;
+      font-size: 24px;
+  }
+
+  @media screen and (max-width: 800px) {
+    .title{
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .icon{
+      font-size: 20px !important;
+    }
+
+
+  }

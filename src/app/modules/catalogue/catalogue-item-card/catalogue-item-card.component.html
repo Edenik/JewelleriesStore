@@ -1,0 +1,28 @@
+<nb-card>
+  <carousel [images]="imageObject" [cellWidth]="307" [height]="307" style="width: 307px;">
+  </carousel>
+  <div style="width: 300px; padding: 10px;">
+    <p class="overflow"><a [routerLink]="['/product/' , item.id]">{{item.title}}</a></p>
+
+
+    <p style="font-weight: bold;">
+
+      <span *ngIf="item.price != 'Call For Price' && item.price != 'Reserved'">
+        {{item.price | currency}}
+      </span>
+      <span *ngIf="item.price == 'Call For Price' ||item.price == 'Reserved'"><a (click)="contact()">Contact For
+          Price</a></span>
+
+      <button nbButton *ngIf="!isWishList" nbTooltip="Save to wishlist" nbTooltipPlacement="bottom" ghost
+        status="primary" (click)="addToWishList(item.sku, item.id)">
+        <nb-icon icon="heart-outline"></nb-icon>
+      </button>
+
+      <button nbButton *ngIf="isWishList" nbTooltip="Remove from wishlist" nbTooltipPlacement="bottom" ghost
+        status="primary" (click)="removeFromWishList(item.sku, item.id)">
+        <nb-icon icon="heart"></nb-icon>
+      </button>
+
+    </p>
+  </div>
+</nb-card>

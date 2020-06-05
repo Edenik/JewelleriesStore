@@ -1,0 +1,53 @@
+<p class="breadcumb">
+    <a class="breadLink" href="/#">Home</a> / <a class="breadLink" [routerLink]="['/cart/']">Cart</a> / Check Out
+</p>
+
+
+<nb-card class="card" *ngIf="items.length>0">
+    <nb-card-body>
+        <table>
+            <caption>Check Out Summary</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">SKU</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Item Price</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let item of items">
+                    <td data-label="Image"><img (click)="showImages(item.images_arr, item.image)"
+                            nbTooltip="Click to see all this item images" nbTooltipPlacement="bottom"
+                            src="{{item.image}}" alt="" height="75px" style="cursor: pointer;"></td>
+                    <td data-label="SKU">{{item.sku}}</td>
+                    <td data-label="Name"><a [routerLink]="['/product',item.id]">{{item.name}}</a></td>
+                    <td data-label="Item Price">
+                        <span>{{item.price | currency }}</span>
+                    </td>
+                    <td data-label="Actions">
+                        <button nbButton status="danger" (click)="removeFromCheckOut(item.id)"
+                            nbTooltip="Remove from Check Out" nbTooltipPlacement="bottom">
+                            <nb-icon icon="trash-2-outline"></nb-icon>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="font-weight: bolder;">Total Price: {{totalPrice | currency}} </p>
+        <button nbButton status="primary" (click)="proceedCheckout()">
+            <i class="fas fa-check"></i>&nbsp;Complete your order </button>
+    </nb-card-body>
+</nb-card>
+
+<nb-card class="card" *ngIf="totalPrice==0">
+    <nb-card-body>
+        <p style="font-weight: bolder;">No more items in this check out summary</p>
+        <a nbButton href="/#" status="info">
+            <nb-icon icon="shopping-bag"></nb-icon> Back to shopping
+        </a>
+    </nb-card-body>
+</nb-card>

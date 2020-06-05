@@ -1,0 +1,54 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="fire" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
+
+<p class="breadcumb">
+    <a class="breadLink" href="/#">Home</a> / <a  class="breadLink" [routerLink]="['/cart/']">Cart</a>
+</p>
+
+
+<nb-card class="card" *ngIf="itemsToShow.length==0">
+    <nb-card-body >
+        <img src="https://cdn.leibish.com//assets/images/shopping-cart-icon.png" alt="">
+        <h2>YOUR CART IS EMPTY</h2>
+        <a nbButton href="/#" status="info"><nb-icon icon="shopping-bag"></nb-icon> Back to shopping</a>
+    </nb-card-body>
+</nb-card>
+
+<nb-card class="card" *ngIf="itemsToShow.length>0">
+    <nb-card-body >
+        <table>
+            <caption>Cart Summary</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">SKU</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Item Price</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let item of itemsToShow">
+                    <td data-label="Image"><img (click)="showImages(item.images_arr, item.image)" nbTooltip="Click to see all this item images" nbTooltipPlacement="bottom" src="{{item.image}}" alt="" height="75px" style="cursor: pointer;" ></td>
+                    <td data-label="SKU">{{item.sku}}</td>
+                    <td data-label="Name"><a [routerLink]="['/product',item.id]">{{item.name}}</a></td>
+                    <td data-label="Item Price"><span *ngIf="item.price != 'Call For Price' && item.price != 'Reserved'">{{item.price | currency }}</span>
+                        <span *ngIf="item.price == 'Call For Price' ||item.price == 'Reserved'"><a (click)="contact(item)">Contact For Price</a></span>
+                    </td>
+                    <td data-label="Actions">
+                        <button nbButton status="danger" (click)="removeFromCart(item.id)" 
+                        nbTooltip="Remove from cart" nbTooltipPlacement="bottom">
+                            <nb-icon icon="trash-2-outline"></nb-icon>  </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="font-weight: bolder;">Total Price: {{totalCartPrice | currency}} </p>
+        <button nbButton status="info" *ngIf="totalCartPrice > 0" (click)="proceedCheckout()">
+            <nb-icon icon="shopping-cart-outline"></nb-icon> Proceed to checkout </button>
+        </nb-card-body>
+</nb-card>
+

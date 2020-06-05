@@ -1,0 +1,82 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="fire" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
+
+<p class="breadcumb">
+    <a class="breadLink" href="/#">Home</a> / <a class="breadLink" [routerLink]="['/wish-list/']">Wish List</a>
+</p>
+
+
+<nb-card class="card">
+    <nb-card-body>
+        <h2 style="margin: 0;">WISHLIST</h2>
+        <p>Keep track of your favorite items. <br>
+            There is absolutely no commitment made by adding to the list, so take advantage and collect your top
+            choices.
+        </p>
+
+        <nb-card *ngIf="itemsToShow" style="padding-left: 10px;">
+            <nb-card-body>
+                <table>
+                    <caption>Wish-List Summary</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Image</th>
+                            <th scope="col">SKU</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Item Price</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let item of itemsList">
+                            <td data-label="Image"><img (click)="showImages(item.images_arr, item.image)"
+                                    nbTooltip="Click to see all this item images" nbTooltipPlacement="bottom"
+                                    src="{{item.image}}" alt="" height="75px" style="cursor: pointer;"></td>
+                            <td data-label="SKU">{{item.sku}}</td>
+                            <td data-label="Name"><a [routerLink]="['/product',item.id]">{{item.name}}</a></td>
+                            <td data-label="Item Price"><span
+                                    *ngIf="item.price != 'Call For Price' && item.price != 'Reserved'">{{item.price | currency }}</span>
+                                <span *ngIf="item.price == 'Call For Price' ||item.price == 'Reserved'"><a
+                                        (click)="contact(item)">Contact For Price</a></span>
+                            </td>
+                            <td data-label="Actions">
+                                <button nbButton status="danger" nbTooltip="Remove from wishlist"
+                                    nbTooltipPlacement="bottom" (click)="removeFromWishList(item.id)">
+                                    <nb-icon icon="heart-outline"></nb-icon>
+                                </button>
+                                <a nbButton *ngIf="!userEmail" nbTooltip="Login to add to cart"
+                                    nbTooltipPlacement="bottom" [routerLink]="['/login' ,'wish-list']">
+                                    <nb-icon icon="shopping-cart-outline"></nb-icon>
+                                </a>
+                                <button nbButton status="danger" *ngIf="checkItem(item.id) && userEmail"
+                                    (click)="removeFromCart(item.id)" nbTooltip="Remove from cart"
+                                    nbTooltipPlacement="bottom">
+                                    <nb-icon icon="shopping-cart-outline"></nb-icon>
+                                </button>
+                                <button nbButton status="info" *ngIf="!checkItem(item.id) && userEmail"
+                                    (click)="addToCart(item.id)" nbTooltip="Add to cart" nbTooltipPlacement="bottom">
+                                    <nb-icon icon="shopping-cart"></nb-icon>
+                                </button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </nb-card-body>
+
+        </nb-card>
+        <nb-card *ngIf="!itemsToShow" style="padding-left: 10px; background-color: #68b2f8; ">
+            <p style="color: #fff;">There are currently no items in this list. Browse through the website and add your
+                favorite pieces to
+                your list!</p>
+        </nb-card>
+        <div *ngIf="!itemsToShow" style="text-align: center;">
+            <a nbButton href="/#" status="info">
+                <nb-icon icon="shopping-bag"></nb-icon> Back to shopping
+            </a>
+        </div>
+
+    </nb-card-body>
+</nb-card>

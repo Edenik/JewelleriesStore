@@ -1,0 +1,217 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+.breadcumb{
+  margin-top: 0;
+  background-color: black;
+  color: white !important;
+  padding: 15px 0px 15px 20px;
+  margin-bottom: 30px;
+}
+.breadLink:link{
+  text-decoration: underline !important;
+  color: #fff !important;
+}
+
+.breadLink:visited {
+  text-decoration: underline !important;
+  color: #fff !important;
+}
+table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+  table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+  }
+  
+  table tr {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: .35em;
+  }
+  
+  table th,
+  table td {
+    padding: .625em;
+    text-align: center;
+  }
+  
+  table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  
+  @media screen and (max-width: 600px) {
+    table {
+      border: 0;
+    }
+  
+    table caption {
+      font-size: 1.3em;
+    }
+    
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+    
+    table td::before {
+      /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    table td:last-child {
+      border-bottom: 0;
+    }
+  }
+
+
+
+
+
+  /* table, th, td {
+    border: none;
+  }
+  
+  table {
+    width: 100%;
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  table.striped tr {
+    border-bottom: none;
+  }
+  
+  table.striped > tbody > tr:nth-child(odd) {
+    background-color: rgba(242, 242, 242, 0.5);
+  }
+  
+  table.striped > tbody > tr > td {
+    border-radius: 0;
+  }
+  
+  table.highlight > tbody > tr {
+    -webkit-transition: background-color .25s ease;
+    transition: background-color .25s ease;
+  }
+  
+  table.highlight > tbody > tr:hover {
+    background-color: rgba(242, 242, 242, 0.5);
+  }
+  
+  table.centered thead tr th, table.centered tbody tr td {
+    text-align: center;
+  }
+  
+  tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+  
+  td, th {
+    padding: 15px 5px;
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    border-radius: 2px;
+  }
+  
+  @media only screen and (max-width: 992px) {
+    table.responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+      display: block;
+      position: relative;
+    }
+
+    .firstTH{
+        margin-bottom: 58px !important;
+    }
+    table.responsive-table td:empty:before {
+      content: '\00a0';
+    }
+    table.responsive-table th,
+    table.responsive-table td {
+      margin: 0;
+      vertical-align: top;
+    }
+    table.responsive-table th {
+      text-align: left;
+    }
+    table.responsive-table thead {
+      display: block;
+      float: left;
+    }
+    table.responsive-table thead tr {
+      display: block;
+      padding: 0 10px 0 0;
+    }
+    table.responsive-table thead tr th::before {
+      content: "\00a0";
+    }
+    table.responsive-table tbody {
+      display: block;
+      width: auto;
+      position: relative;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    table.responsive-table tbody tr {
+      display: inline-block;
+      vertical-align: top;
+    }
+    table.responsive-table th {
+      display: block;
+      text-align: right;
+    }
+    table.responsive-table td {
+      display: block;
+      min-height: 1.25em;
+      text-align: left;
+    }
+    table.responsive-table tr {
+      border-bottom: none;
+      padding: 0 10px;
+    }
+    table.responsive-table thead {
+      border: 0;
+      border-right: 1px solid rgba(0, 0, 0, 0.12);
+    }
+  }
+  
+  */

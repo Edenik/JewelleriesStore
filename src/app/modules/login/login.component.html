@@ -1,0 +1,29 @@
+<p class="breadcumb">
+    <a class="breadLink" href="/#">Home</a> / <a class="breadLink" [routerLink]="['/login/']">Login</a>
+</p>
+
+<nb-card *ngIf="userEmail" accent="primary" style="width: 300px; margin: 0 auto;">
+    <nb-card-header>Already logged in!</nb-card-header>
+    <nb-card-body style=" margin: 0 auto;">
+        <a nbButton href="/#" status="info">
+            <nb-icon icon="shopping-bag"></nb-icon> Back to shopping
+        </a>
+    </nb-card-body>
+</nb-card>
+
+<nb-card *ngIf="!userEmail" accent="primary" style="width: 300px; margin: 0 auto;">
+    <nb-card-header>In order to use this section, please Sign In!</nb-card-header>
+    <nb-card-body style=" margin: 0 auto;">
+
+        <button nbButton (click)="loginWithGoogle()" status="danger">
+            <nb-icon icon="google"></nb-icon>
+            Sign in with Google
+        </button>
+
+        <!-- <button nbButton (click)="loginWithFacebook()" status="primary">
+                <nb-icon icon="facebook"></nb-icon>
+                Sign in with Facebook
+            </button> -->
+
+    </nb-card-body>
+</nb-card>

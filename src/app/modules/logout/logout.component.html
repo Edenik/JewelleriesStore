@@ -1,0 +1,12 @@
+<nb-card accent="info">
+    <nb-card-body>
+        <p style="font-weight: bolder;">Hello, {{fullUser.userName}}!</p>
+        <p style="margin-bottom: 35px;">Are you sure you want to logout?</p>
+        <hr style="margin-bottom: 10px;">
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <button nbButton fullWidth outline status="info" (click)="logOut()"><i class="far fa-sign-out"></i>&nbsp;
+                Logout</button>
+            <button nbButton fullWidth outline status="danger" (click)="cancel()"><i
+                    class="fas fa-minus-circle"></i>&nbsp; Cancel</button>
+        </div>
+    </nb-card-body>

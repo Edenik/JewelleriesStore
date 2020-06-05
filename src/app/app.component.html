@@ -1,0 +1,53 @@
+<nb-layout>
+  <nb-layout-header>
+
+    <a href="#" style="text-decoration: none;">
+      <span class="title">
+        <i class="fas fa-gem icon"></i>
+        Jewelleries</span>
+    </a>
+    <span class="spacer"></span>
+
+
+    <button nbButton status="primary" ghost outline nbContextMenuTrigger="hover" [nbContextMenu]="jewelleryMenuItems"
+      nbContextMenuPlacement="bottom" status="primary">
+      <i class="fad fa-rings-wedding icon"></i>
+    </button>
+
+
+
+    <span class="spacer"></span>
+    <button nbButton nbTooltip="About" nbTooltipPlacement="bottom" ghost status="primary" (click)="about()">
+      <nb-icon icon="question-mark-circle"></nb-icon>
+    </button>
+    <button *ngIf="fullUser" nbButton status="primary" ghost nbContextMenuTrigger="hover"
+      [nbContextMenu]="loggedInItems" nbContextMenuPlacement="right" status="primary">
+      <nb-icon icon="person"></nb-icon>
+    </button>
+    <button *ngIf="!fullUser" nbButton status="primary" ghost nbContextMenuTrigger="hover"
+      [nbContextMenu]="loggedOutItems" nbContextMenuPlacement="right" status="primary">
+      <nb-icon icon="person"></nb-icon>
+    </button>
+
+    <button nbButton nbTooltip="Wish List" nbTooltipPlacement="bottom" ghost status="primary" routerLink="/wish-list">
+      <nb-icon icon="heart"></nb-icon>
+    </button>
+    <button nbButton nbTooltip="Cart" nbTooltipPlacement="bottom" ghost status="primary" routerLink="/cart">
+      <nb-icon icon="shopping-cart"></nb-icon>
+    </button>
+
+
+
+  </nb-layout-header>
+
+
+  <nb-layout-column class="colored-column-basic" style="padding: 0 0 12px 0;">
+    <router-outlet (deactivate)="onDeactivate($event)"></router-outlet>
+
+  </nb-layout-column>
+  <nb-layout-footer> © All rights reserved 2020 - Eden Nahum - &nbsp;<a href="https://Edenik.com"
+      target="_blank">Edenik.com</a>
+
+
+  </nb-layout-footer>
+</nb-layout>

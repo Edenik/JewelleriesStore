@@ -1,0 +1,42 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="fire" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
+
+<p class="breadcumb">
+    <a class="breadLink" href="/#">Home</a> / <a class="breadLink" [routerLink]="['/order' ,orderId]">Order Info</a> /
+    {{orderId}}
+</p>
+
+<nb-card class="card" *ngIf="orderBelongsToUser">
+    <nb-card-body *ngFor="let order of orders">
+        <table>
+            <caption>Order Info:</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Items</th>
+                    <th scope="col">Date</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td data-label="Order ID"><a href="/orders/{{order.id}}">{{order.id}}</a></td>
+                    <td data-label="Price">{{order.price | currency}}</td>
+                    <td data-label="Items">
+                        <p *ngFor="let item of order.items"><a href="/product/{{item}}">{{item}}</a></p>
+                    </td>
+                    <td data-label="Date">{{order.date.toDate()  | date  }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </nb-card-body>
+</nb-card>
+
+<nb-card class="card" *ngIf="!orderBelongsToUser">
+    <nb-card-body>
+        <h2><i class="far fa-exclamation-triangle"></i> Error: Order no.{{orderId}} doesn't belongs to user!</h2>
+    </nb-card-body>
+</nb-card>

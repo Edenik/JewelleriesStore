@@ -1,0 +1,89 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="fire" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
+
+<p class="breadcumb" *ngIf="item.id">
+    <a class="breadLink" href="/#">Home</a> / <a class="breadLink" [routerLink]="['/cat']">Catalogue</a> / <a
+        class="breadLink" [routerLink]="['/product/', item.sku ]">Product</a> /
+    {{item.title}}
+</p>
+
+<div class="container">
+    <div id="content" class="full">
+        <div class="product">
+            <div class="image">
+                <img (click)="showImages(item.images_arr, item.image)" nbTooltip="Click to see all this item images"
+                    nbTooltipPlacement="right" src="{{item.image}}" alt="">
+            </div>
+
+
+            <div class="details">
+                <h1>{{item.name}}</h1>
+                <h4 style="margin: 0" *ngIf="item.price != 'Call For Price' && item.price != 'Reserved'">
+                    Price: {{item.price | currency}}
+                </h4>
+                <h4 style="margin: 0" *ngIf="item.price == 'Call For Price' ||item.price == 'Reserved'"><a
+                        (click)="contact()">Contact For Price</a></h4>
+                <div class="entry">
+                    {{item.long_desc}}
+                </div>
+
+                <div class="actions">
+                    <p>Jewellery type: {{item.j_type}} </p>                    
+                    <p>Metal color: {{item.metal_color}}</p>                    
+                    <p>Metal type: {{item.metal_type}}</p>    
+                    <p>Total Weight: {{totalWeight | number}} Ct</p>                
+                    <p>Center Jewellery Weight: {{item.j_center_total_weight}} Ct</p>                
+                </div>
+                <div class="actions">
+                    <div fxLayout="row wrap" fxLayoutAlign="center center">
+                        <p style="margin: 0 5px 0 5px; text-transform: uppercase;">Likes: {{likesArr.length}} /
+                            Dislikes:
+                            {{dislikesArr.length}}
+                            <br><span *ngIf="userEmail">You voted: <span
+                                    style="text-transform: uppercase;">{{itemStatus}}</span> </span></p>
+                        <p style="margin: 0 5px 0 5px;">
+                            <button nbButton *ngIf="userEmail && itemStatus=='dislike'" (click)="addDislike()"
+                                nbTooltip="Dislike" nbTooltipPlacement="bottom" status="success"><i
+                                    class="fas fa-thumbs-down"></i>&nbsp; DisLike</button>
+                            <button nbButton *ngIf="userEmail && itemStatus!='dislike'" (click)="addDislike()"
+                                nbTooltip="Dislike" nbTooltipPlacement="bottom" status="info"><i
+                                    class="far fa-thumbs-down"></i>&nbsp; DisLike</button>
+                            <button nbButton *ngIf="userEmail && itemStatus!='like'" (click)="addLike()"
+                                nbTooltip="Like" nbTooltipPlacement="bottom" status="info"><i
+                                    class="far fa-thumbs-up"></i>&nbsp;
+                                Like</button>
+                            <button nbButton *ngIf="userEmail && itemStatus=='like'" (click)="addLike()"
+                                nbTooltip="Like" nbTooltipPlacement="bottom" status="success"><i
+                                    class="fas fa-thumbs-up"></i>&nbsp;
+                                Like</button>
+
+                            <a nbButton *ngIf="userEmail == null" nbTooltip="Login To Like" nbTooltipPlacement="bottom"
+                                href="/login/product/{{item.id}}"><i class="far fa-thumbs-up"></i>&nbsp;
+                                Like</a>
+                            <a nbButton *ngIf="userEmail == null" nbTooltip="Login To Dislike"
+                                nbTooltipPlacement="bottom" href="/login/product/{{item.id}}"><i
+                                    class="far fa-thumbs-down"></i>&nbsp;
+                                DisLike</a>
+                        </p>
+                    </div>
+
+                    <div fxLayout="column wrap" fxLayoutAlign="center center">
+                        <a nbButton *ngIf="!userEmail" nbTooltip="Login to add to cart" nbTooltipPlacement="bottom"
+                        href="/login/product/{{item.id}}">
+                            <nb-icon icon="shopping-cart-outline"></nb-icon> Login to add to cart
+                        </a>
+                        <button nbButton status="danger" *ngIf="addedToCart && userEmail"
+                            (click)="removeFromCart(item.id)" nbTooltip="Remove from cart" nbTooltipPlacement="bottom">
+                            <nb-icon icon="shopping-cart-outline"></nb-icon> Remove from cart
+                        </button>
+                        <button nbButton status="info" *ngIf="!addedToCart && userEmail" (click)="addToCart(item.id)"
+                            nbTooltip="Add to cart" nbTooltipPlacement="bottom">
+                            <nb-icon icon="shopping-cart"></nb-icon> Add to cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

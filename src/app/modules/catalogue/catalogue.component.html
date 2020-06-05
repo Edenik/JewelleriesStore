@@ -1,0 +1,121 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="fire" [fullScreen]="true">
+  <p style="color: white"> Loading... </p>
+</ngx-spinner>
+
+<p class="breadcumb">
+  <a class="breadLink" href="/#">Home</a> / <a class="breadLink" [routerLink]="['/cat']">Catalogue</a> / <a
+    class="breadLink" [routerLink]="['/cat/', selected_type]" style="text-transform: capitalize;">{{selected_type}}</a>
+</p>
+
+
+<div style="margin: 0 auto; text-align: center;">
+  <p *ngIf="page_data" class="type">{{selected_type}}</p>
+  <p *ngIf="page_data" style="font-weight: bolder;">{{page_data.total}} Items</p>
+</div>
+
+<div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+  <nb-card class="select">
+    <ng-multiselect-dropdown style="overflow: inherit !important;" [placeholder]="'Metal Type'"
+      [settings]="dropdownSettings" [data]="metalsOptions" (onSelect)="onItemSelect($event, 'metal')"
+      (onDeSelectAll)="onItemDeSelectAll($event, 'metal')" (onDeSelect)="onItemDeSelect($event, 'metal')"
+      (onSelectAll)="onSelectAll($event, 'metal')">
+    </ng-multiselect-dropdown>
+  </nb-card>
+
+
+  <nb-card class="select">
+    <ng-multiselect-dropdown [placeholder]="'Shape'" [settings]="dropdownSettings" [data]="shapesOptions"
+      (onSelect)="onItemSelect($event, 'shape')" (onDeSelectAll)="onItemDeSelectAll($event, 'shape')"
+      (onDeSelect)="onItemDeSelect($event, 'shape')" (onSelectAll)="onSelectAll($event, 'shape')">
+    </ng-multiselect-dropdown>
+  </nb-card>
+
+  <nb-card class="select">
+    <ng-multiselect-dropdown [placeholder]="'Weight'" [settings]="dropdownSettings" [data]="weightOptions"
+      (onSelect)="onItemSelect($event, 'weight')" (onDeSelectAll)="onItemDeSelectAll($event, 'weight')"
+      (onDeSelect)="onItemDeSelect($event, 'weight')" (onSelectAll)="onSelectAll($event, 'weight')">
+    </ng-multiselect-dropdown>
+  </nb-card>
+
+  <nb-card class="select">
+    <ng-multiselect-dropdown [placeholder]="'Price'" [settings]="dropdownSettings" [data]="priceOptions"
+      (onSelect)="onItemSelect($event, 'price')" (onDeSelectAll)="onItemDeSelectAll($event, 'price')"
+      (onDeSelect)="onItemDeSelect($event, 'price')" (onSelectAll)="onSelectAll($event, 'price')">
+    </ng-multiselect-dropdown>
+  </nb-card>
+
+  <nb-card class="sort">
+    <button outline nbButton [nbContextMenu]="sortOptions" nbContextMenuTrigger="hover">
+      Sort by
+    </button>
+  </nb-card>
+</div>
+
+
+
+<div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+  <app-catalogue-item-card *ngFor="let item of items" [item]="item" style="z-index: 0;"></app-catalogue-item-card>
+</div>
+
+
+<nb-card *ngIf="page_data" style="margin: 0 auto; width: 300px; text-align: center;">
+  <p>
+    <button *ngIf="page_data.page!='1'" nbButton nbTooltip="First page" nbTooltipPlacement="bottom" ghost
+      status="primary" (click)="page('first')">
+      <nb-icon icon="arrowhead-left-outline"></nb-icon>
+    </button>
+    <button *ngIf="page_data.page!='1'" nbButton nbTooltip="Previous page" nbTooltipPlacement="bottom" ghost
+      status="primary" (click)="page('prev')">
+      <nb-icon icon="arrow-left-outline"></nb-icon>
+    </button>
+    {{ page_data.page}} of {{ page_data.num_pages}}
+    <button *ngIf="page_data.page!=page_data.num_pages" nbButton nbTooltip="Next page" nbTooltipPlacement="bottom" ghost
+      status="primary" (click)="page('next')">
+      <nb-icon icon="arrow-right-outline"></nb-icon>
+    </button>
+    <button *ngIf="page_data.page!=page_data.num_pages" nbButton nbTooltip="Last page" nbTooltipPlacement="bottom" ghost
+      status="primary" (click)="page('last')">
+      <nb-icon icon="arrowhead-right-outline"></nb-icon>
+    </button>
+  </p>
+</nb-card>
+
+
+
+
+
+
+
+<!-- <nb-accordion>
+  <nb-accordion-item>
+    <nb-accordion-item-header>Filters & Sort</nb-accordion-item-header>
+    <nb-accordion-item-body>
+      <nb-select class="select" multiple placeholder="Metal">
+         (click)="setMetalType(metal)"
+        <nb-option #metalSelect (click)="onChange(metalSelect.value)" *ngFor="let metal of metalsOptions"
+          value="{{metal}}">{{metal}}</nb-option>
+      </nb-select>
+
+
+
+      <nb-select class="select" multiple placeholder="Shape">
+        <nb-option *ngFor="let shape of shapesOptions" value="shape" (click)="setShapeType(shape)">{{shape}}</nb-option>
+      </nb-select>
+
+      <nb-select class="select" multiple placeholder="Weight">
+        <nb-option *ngFor="let weight of weightOptions" value="weight" (click)="setWeight(weight)">{{weight}}
+        </nb-option>
+      </nb-select>
+
+      <nb-select class="select" multiple placeholder="Price">
+        <nb-option *ngFor="let price of priceOptions" value="price" (click)="setPrice(price)">{{price}}</nb-option>
+      </nb-select>
+
+
+      <button outline nbButton [nbContextMenu]="sortOptions" nbContextMenuTrigger="hover">
+        Sort by
+      </button>
+
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+</nb-accordion>  -->
